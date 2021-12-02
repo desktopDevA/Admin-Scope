@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Order>
+
+<h1>Details</h1>
+
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+        <thead>
+            @foreach (var product in item.OrderItems)
+            {
+
+
+            <tr>
+                <th scope="col">
+                    @item.Name
+                </th>
+                <th scope="col">
+                    @product.Quantity
+                </th>
+                <th scope="col">
+                    @product.Price
+                </th>
+            </tr>
+            }
+        </thead>
+    }
+
+    </table>
+<div>
+    <a class="btn btn-dark" asp-action="Index">Back to List</a>
+</div>

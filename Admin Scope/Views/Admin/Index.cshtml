@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+
+<h1>Products</h1>
+<br />
+
+<a class="btn btn-primary"  asp-action="orders">Orders</a>
+<br />
+<br />
+<div>
+    <a asp-action="Create" class="btn btn-success">Create New </a>
+</div>
+<br />  
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Prod_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prod_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Prod_Id" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Prod_Id " class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Prod_Id" class="btn btn-danger" onclick="return confirm('Are U Sure Delet?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

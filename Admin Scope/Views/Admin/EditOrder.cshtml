@@ -1,0 +1,57 @@
+﻿@model Order
+
+@{
+    decimal qq=0;
+    decimal pric=0;
+
+ }
+
+<h1>EditOrder</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditOrder">
+            <input type="hidden" asp-for="Order_Id" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+            @foreach (var item in Model.OrderItems)
+            {
+                qq = @item.Quantity;
+                pric = @item.Price;
+
+
+                <div class="form-group">
+                    <label asp-for="@item.Quantity" class="control-label"></label>
+                    <input asp-for="@qq" value="@qq" class="form-control" />
+                </div>
+
+
+
+                <div class="form-group">
+                    <label asp-for="@item.Price" class="control-label"></label>
+                    <input asp-for="@pric" value="@pric" class="form-control" />
+                </div>
+            }
+
+       
+          
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+
